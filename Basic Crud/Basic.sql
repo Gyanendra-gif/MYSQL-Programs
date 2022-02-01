@@ -35,13 +35,14 @@ Alter table employee_payroll Add Address varchar(200) not null default 'Rewa';
 Alter table employee_Payroll Add Department varchar(200) not null default'HR';
 select * from employee_payroll;
 
-create table Department(id int primary key, DepName varchar(20), Depid int, foreign key(Depid) references employee_payroll(id));
-insert into Department values(502,'IT',1);
-insert into Department values(708,'Accountant',2);
-insert into Department values(908,'Attendees',3);
-insert into Department values(1132,'Payroll',4);
+create table Department(Depid int, DepName varchar(20), foreign key(Depid) references employee_payroll(id));
+insert into Department(DepName, Depid) values('IT',1);
+insert into Department(DepName, Depid) values('Accountant',2);
+insert into Department(DepName, Depid) values('Attendees',3);
+insert into Department(DepName, Depid) values('Payroll',4);
 select * from Department;
+
+select employee_payroll.Name , Department.DepName from employee_payroll, Department where Department.Depid=employee_payroll.id; # To Fetch Data From two Tables
 desc Department; # Discription of Table
 
-select employee_Payroll.id, employee_Payroll.Name, Department.DepName from employee_payroll, Department where employee_Payroll.id=Department.id; # Join two tables
 
