@@ -12,6 +12,14 @@ connection = con.connect(host='localhost',database='student_attendance',user='ro
 cursor= connection.cursor()
 
 def insert():
+    """
+    Description:
+        Function is used to insert data into the table after taking input from the user
+    Parameter:
+        None
+    Return:
+        None
+    """
     name = input("Enter the Name of Student: ")
     rollNo = int(input("Enter Roll No. of Student: "))
     section = input("Enter Section of the Student: ")
@@ -25,6 +33,14 @@ def insert():
         print(e)
 
 def read():
+    """
+    Description:
+        Function is used to read data of the table
+    Parameter:
+        None
+    Return:
+        None
+    """
     sql = "select * from student_data"
     try:
         cursor.execute(sql)
@@ -35,6 +51,14 @@ def read():
         print(e)
 
 def update():
+    """
+    Description:
+        Function is used to update data of the table after taking id of student from the user
+    Parameter:
+        None
+    Return:
+        None
+    """
     key=int(input("Enter id of student to update data: "))
     sql = "select * from student_data where id=%s"
     value = (key,)
@@ -66,6 +90,14 @@ def update():
         print(e)        
          
 def delete():
+    """
+    Description:
+        Function is used to delete data from the table after taking id from the user
+    Parameter:
+        None
+    Return:
+        None
+    """
     key=int(input("Enter id of student to delete data: "))
     sql = "delete from student_data where id=%s"
     value = (key,)
