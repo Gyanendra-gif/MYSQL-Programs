@@ -100,11 +100,28 @@ def selfJoin():
     except Exception as e:
         print(e)
 
+def addIndex():
+    """
+    Description:
+        Function is used to add index into the table 
+    Parameter:
+        None
+    Return:
+        None
+    """
+
+    sql = "ALTER table items ADD INDEX fetch_data (price);"
+    try:
+        cursor.execute(sql)
+        print('Index Added Successfully')
+    except Exception as e:
+        print(e)
+
 if __name__ == "__main__":
     condition = True
     while (condition == True):
         try:
-            choice = int(input("Enter your choice to perform operation, \n 1)Inner join \n 2)Left join \n 3)Right join \n 4)Cross Join \n 5)Self join:-"))
+            choice = int(input("Enter your choice to perform operation, \n 1)Inner join \n 2)Left join \n 3)Right join \n 4)Cross Join \n 5)Self join \n 6) Add Index:-"))
             if (choice==1):
                 innerJoin()
             elif (choice==2):
@@ -115,6 +132,8 @@ if __name__ == "__main__":
                 crossJoin()
             elif (choice==5):
                 selfJoin()
+            elif (choice==6):
+                addIndex()
             else:
                 print('Enter Correct Option')
             userChoice = int(input('Press 0 to Continue the Program or 1 to stop the program: '))
